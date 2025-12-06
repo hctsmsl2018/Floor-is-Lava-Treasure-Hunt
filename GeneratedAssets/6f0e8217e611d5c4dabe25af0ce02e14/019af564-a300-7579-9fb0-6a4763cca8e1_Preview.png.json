@@ -1,0 +1,11 @@
+{
+    "asset": "6f0e8217e611d5c4dabe25af0ce02e14",
+    "fileName": "019af564-a300-7579-9fb0-6a4763cca8e1_Preview.png",
+    "prompt": "Brightly glowing red/orange lava",
+    "negativePrompt": "rock, black, gray",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1401739191,
+    "w3CTraceId": "869fc18c71ac2debfd78e10ce15a9a91",
+    "refinementMode": "Generation"
+}

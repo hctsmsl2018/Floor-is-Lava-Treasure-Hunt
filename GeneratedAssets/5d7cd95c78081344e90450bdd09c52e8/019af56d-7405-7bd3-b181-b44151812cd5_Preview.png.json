@@ -1,0 +1,11 @@
+{
+    "asset": "5d7cd95c78081344e90450bdd09c52e8",
+    "fileName": "019af56d-7405-7bd3-b181-b44151812cd5_Preview.png",
+    "prompt": "Create an extremely fractured rock texture, large cracks, chunks breaking apart, crumbling stone on the verge of collapse for AR",
+    "negativePrompt": "",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1306346677,
+    "w3CTraceId": "d02433bebe1b9636bc28bc369bacfbcf",
+    "refinementMode": "Generation"
+}

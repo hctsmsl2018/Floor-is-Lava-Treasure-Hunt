@@ -1,0 +1,11 @@
+{
+    "asset": "6f0e8217e611d5c4dabe25af0ce02e14",
+    "fileName": "019af565-0c57-7fe8-b1ef-4d0583edb3c1_Preview.png",
+    "prompt": "Hyper-realistic lava",
+    "negativePrompt": "rock, black, gray",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1576800315,
+    "w3CTraceId": "29e5840a469332846944de8be0fb5953",
+    "refinementMode": "Generation"
+}

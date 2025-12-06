@@ -1,0 +1,11 @@
+{
+    "asset": "4971c76fb9245714e87da64b4a450352",
+    "fileName": "019af56c-e90b-7380-aaa4-1ba4950813ec_Preview.png",
+    "prompt": "Generate a heavily cracked rock texture with visible fracture lines spreading across surface, damaged stone for AR",
+    "negativePrompt": "",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 2073094817,
+    "w3CTraceId": "65f71e4be25b7fda4095947c73d1f50e",
+    "refinementMode": "Generation"
+}

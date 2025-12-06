@@ -1,0 +1,11 @@
+{
+    "asset": "0190013071aaec743acc390207820966",
+    "fileName": "019af1c6-4682-7688-a955-4666acad8fed.pose.json",
+    "prompt": "A hunched over goblin walking at a slow pace.",
+    "negativePrompt": "",
+    "model": "9e46c009-67d8-4254-a3a0-32e3168247ee",
+    "modelName": "Text to Motion",
+    "customSeed": 767696804,
+    "w3CTraceId": "a383eb50773907691fd5a4fef22457da",
+    "isTrimmed": false
+}

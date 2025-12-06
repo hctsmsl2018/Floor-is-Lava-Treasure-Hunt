@@ -1,0 +1,11 @@
+{
+    "asset": "5d7cd95c78081344e90450bdd09c52e8",
+    "fileName": "019af56f-7153-73ec-8f58-dfb6e6885d1d_Preview.png",
+    "prompt": "Create an extremely fractured rock texture on the verge of collapse for AR",
+    "negativePrompt": "unrealistic, flat, contrast",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 202395833,
+    "w3CTraceId": "74ac9b8700668437ca269f4d468d26c7",
+    "refinementMode": "Generation"
+}

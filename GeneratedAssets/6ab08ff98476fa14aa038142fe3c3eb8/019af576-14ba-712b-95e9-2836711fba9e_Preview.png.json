@@ -1,0 +1,11 @@
+{
+    "asset": "6ab08ff98476fa14aa038142fe3c3eb8",
+    "fileName": "019af576-14ba-712b-95e9-2836711fba9e_Preview.png",
+    "prompt": "Black AR grid",
+    "negativePrompt": "",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 790919428,
+    "w3CTraceId": "8525b13a558cd8778ed94d8093cac73e",
+    "refinementMode": "Generation"
+}
