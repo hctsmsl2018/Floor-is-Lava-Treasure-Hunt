@@ -16,6 +16,7 @@ public class GridGenerator : MonoBehaviour
     public Material backgroundMaterial; // Material for background
 
     private GameObject[,] grid; // Store references to grid tiles
+    public System.Collections.Generic.List<RockTile> allTiles = new System.Collections.Generic.List<RockTile>();
     private Material[] rockMaterials; // Array to store rock materials by state
 
     void Start()
@@ -29,6 +30,14 @@ public class GridGenerator : MonoBehaviour
         };
 
         GenerateGrid(); // Call the method to generate the grid when the scene starts
+
+        // Ensure GameManager exists and starts the game
+        if (GameManager.Instance == null)
+        {
+            Debug.Log("GameManager not found in scene. Auto-creating...");
+            GameObject gmObj = new GameObject("GameManager");
+            gmObj.AddComponent<GameManager>();
+        }
     }
 
     void GenerateGrid()
@@ -48,23 +57,17 @@ public class GridGenerator : MonoBehaviour
                 square.transform.position = new Vector3(startX + j * squareSize, 0, startZ + i * squareSize);
                 square.transform.parent = gridParent.transform;
 
-                // Randomize tile type
-                Renderer renderer = square.GetComponent<Renderer>();
-                float randomValue = Random.value;
-
-                if (randomValue < 0.2f) // 20% chance to be lava
+                // Always create a rock tile initially
+                RockTile rockTile = square.AddComponent<RockTile>();
+                rockTile.SetInitialState(0); // Always start uncracked
+                
+                Renderer squareRenderer = square.GetComponent<Renderer>();
+                if (squareRenderer != null)
                 {
-                    square.AddComponent<LavaTile>();
-                    renderer.material = lavaMaterial;
-                }
-                else // 80% chance to be rock
-                {
-                    RockTile rockTile = square.AddComponent<RockTile>();
-                    int randomState = Random.Range(0, 3); // Randomize rock state (0-2)
-                    rockTile.SetInitialState(randomState);
-                    renderer.material = rockMaterials[randomState]; // Assign material based on state
+                    squareRenderer.material = rockMaterials[0]; // Uncracked material
                 }
 
+                allTiles.Add(rockTile);
                 grid[i, j] = square;
             }
         }
@@ -84,22 +87,7 @@ public class GridGenerator : MonoBehaviour
         background.name = "Background";
     }
 
-    void Update()
-    {
-        // Check for tiles that have been converted to lava
-        foreach (GameObject tile in grid)
-        {
-            if (tile != null && tile.CompareTag("ConvertedLava"))
-            {
-                Renderer renderer = tile.GetComponent<Renderer>();
-                if (renderer != null)
-                {
-                    renderer.material = lavaMaterial;
-                }
-                tile.tag = "Untagged"; // Reset tag after conversion
-            }
-        }
-    }
+
 
     public Material GetRockMaterialForState(int state)
     {
@@ -108,5 +96,10 @@ public class GridGenerator : MonoBehaviour
             return rockMaterials[state];
         }
         return rockMaterials[0]; // Default to uncracked
+    }
+
+    public System.Collections.Generic.List<RockTile> GetAllRockTiles()
+    {
+        return allTiles;
     }
 }

@@ -57,7 +57,20 @@ public class RockTile : MonoBehaviour
 
     void Update()
     {
-        if (playerStandingOn)
+        if (isWarning)
+        {
+            // Flash between materials or colors to indicate warning
+            float flicker = Mathf.PingPong(Time.time * 10f, 1f);
+            if (tileRenderer != null)
+            {
+                // Simple color flash for now, red tint
+                if (rockMaterial.HasProperty("_BaseColor"))
+                {
+                    rockMaterial.SetColor("_BaseColor", Color.Lerp(originalColor, Color.red, flicker));
+                }
+            }
+        }
+        else if (playerStandingOn)
         {
             // Apply flicker effect based on current crack state
             float currentFlickerSpeed = baseFlickerSpeeds[(int)currentState];
@@ -87,6 +100,24 @@ public class RockTile : MonoBehaviour
                 rockMaterial.SetColor("_BaseColor", originalColor);
             }
         }
+    }
+
+    private bool isWarning = false;
+
+    public void SetWarning(bool active)
+    {
+        isWarning = active;
+        if (!active && rockMaterial != null && rockMaterial.HasProperty("_BaseColor"))
+        {
+            rockMaterial.SetColor("_BaseColor", originalColor); // Reset color
+        }
+    }
+
+    public void Collapse()
+    {
+        // Force transition to lava immediately
+        currentState = CrackState.VergeOfCrumbling; // Set to last state before lava
+        ConvertToLava();
     }
 
     void BreakToNextState()
@@ -155,8 +186,6 @@ public class RockTile : MonoBehaviour
             meshRenderer.enabled = false;
         }
 
-        // Notify GridGenerator to update the material reference
-        gameObject.tag = "ConvertedLava";
     }
 
     void OnCollisionEnter(Collision collision)

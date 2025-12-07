@@ -6,20 +6,12 @@ public class WaveTimer3D : MonoBehaviour
     [SerializeField] public float timeRemaining = 30f;
     [SerializeField] public TextMeshPro[] timerTexts;
 
-    void Update()
+    public void SetTime(float time)
     {
-        if (timeRemaining > 0)
+        string display = Mathf.Ceil(Mathf.Max(0, time)).ToString();
+        foreach (var t in timerTexts)
         {
-            timeRemaining -= Time.deltaTime;
-            string display = Mathf.Ceil(timeRemaining).ToString();
-
-            foreach (var t in timerTexts)
-                t.text = display;
-        }
-        else
-        {
-            foreach (var t in timerTexts)
-                t.text = "0";
+            if (t != null) t.text = display;
         }
     }
 }
