@@ -556,8 +556,12 @@ PlayerSettings:
   m_BuildTargetGraphicsJobs:
   - m_BuildTarget: AndroidPlayer
     m_GraphicsJobs: 1
+  - m_BuildTarget: MacStandaloneSupport
+    m_GraphicsJobs: 1
   m_BuildTargetGraphicsJobMode:
   - m_BuildTarget: AndroidPlayer
+    m_GraphicsJobMode: 1
+  - m_BuildTarget: MacStandaloneSupport
     m_GraphicsJobMode: 1
   m_BuildTargetGraphicsAPIs:
   - m_BuildTarget: iOSSupport
@@ -973,11 +977,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: cc81da15-2610-4169-b59f-04c5d903da03
+  cloudProjectId: 4d26c061-6eed-4b09-9a50-be22db2fc1e2
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: Lava Multiplayer Demo
-  organizationId: denizkurtaran00
+  organizationId: lightspeedturtle
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

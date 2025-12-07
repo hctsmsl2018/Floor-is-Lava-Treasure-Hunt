@@ -1,0 +1,11 @@
+{
+    "asset": "3bb7b76ff75b55c4da3c76b1094cf766",
+    "fileName": "019af156-c55f-77d9-98d6-bb44fc079e25_Preview.png",
+    "prompt": "animated lava terrain layer",
+    "negativePrompt": "",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1554129908,
+    "w3CTraceId": "6ca0e201465484f63c99098f843d96cd",
+    "refinementMode": "Generation"
+}

@@ -1,0 +1,11 @@
+{
+    "asset": "6f0e8217e611d5c4dabe25af0ce02e14",
+    "fileName": "019af563-b53a-7053-8fd3-d9b7db35621d_Preview.png",
+    "prompt": "Create a material for lava tiles that are glowing and bubbling.",
+    "negativePrompt": "",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 637543614,
+    "w3CTraceId": "8e600ac599df724a769df08fe1b4c15f",
+    "refinementMode": "Generation"
+}

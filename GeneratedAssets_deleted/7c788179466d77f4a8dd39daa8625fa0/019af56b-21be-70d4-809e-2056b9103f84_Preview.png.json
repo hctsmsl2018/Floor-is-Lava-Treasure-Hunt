@@ -1,0 +1,11 @@
+{
+    "asset": "7c788179466d77f4a8dd39daa8625fa0",
+    "fileName": "019af56b-21be-70d4-809e-2056b9103f84_Preview.png",
+    "prompt": "Generate a clean, solid rock texture with subtle surface detail, gray stone material for AR, physically-based",
+    "negativePrompt": "",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 481325383,
+    "w3CTraceId": "05a6571efed3d3dec1fc2b3be8813f4f",
+    "refinementMode": "Generation"
+}

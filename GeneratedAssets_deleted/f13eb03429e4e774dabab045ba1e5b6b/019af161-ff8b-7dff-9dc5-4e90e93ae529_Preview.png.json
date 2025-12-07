@@ -1,0 +1,11 @@
+{
+    "asset": "f13eb03429e4e774dabab045ba1e5b6b",
+    "fileName": "019af161-ff8b-7dff-9dc5-4e90e93ae529_Preview.png",
+    "prompt": "A black grid terrain with 1 ft x 1 ft squares, mostly green, with a few red and blue squares, and 3-inch gaps between the squares.",
+    "negativePrompt": "",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1394211831,
+    "w3CTraceId": "82db53a93217fdd768e4d7f49eaf93c7",
+    "refinementMode": "Generation"
+}

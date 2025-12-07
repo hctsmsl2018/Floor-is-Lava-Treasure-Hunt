@@ -1,0 +1,11 @@
+{
+    "asset": "7c788179466d77f4a8dd39daa8625fa0",
+    "fileName": "019af56b-e6e1-746d-8790-4630e0527753_Preview.png",
+    "prompt": "Create a rock texture with small surface cracks, subtle damage, gray stone with fine fractures for AR",
+    "negativePrompt": "",
+    "model": "44ec3749-963a-44b1-aa54-dc19f6ed8ab2",
+    "modelName": "Unity Texture2D",
+    "customSeed": 950668566,
+    "w3CTraceId": "e22fad7d221f880d80dadb9c79960d76",
+    "refinementMode": "Generation"
+}
