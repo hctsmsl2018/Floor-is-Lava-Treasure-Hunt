@@ -9,10 +9,9 @@ public class HeightAdjuster : MonoBehaviour
 
         if (trackingSpace != null)
         {
-            Debug.Log("1234");
             // Adjust the local position of the TrackingSpace along the Y-axis
             Vector3 newPosition = trackingSpace.localPosition;
-            newPosition.y = 0;
+            newPosition.y = 0.1f;
             trackingSpace.localPosition = newPosition;
         }
     }

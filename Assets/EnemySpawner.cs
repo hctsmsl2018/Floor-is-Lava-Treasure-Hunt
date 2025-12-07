@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (tile != null)
             {
-                Vector3 spawnPosition = tile.transform.position + new Vector3(0, 0.5f, 0); // Adjust Y position to place enemy above the tile
+                Vector3 spawnPosition = tile.transform.position + new Vector3(0, 0.3f, 0); // Adjust Y position to place enemy above the tile
                 Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             }
         }
