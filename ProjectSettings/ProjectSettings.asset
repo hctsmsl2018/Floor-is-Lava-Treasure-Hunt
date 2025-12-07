@@ -148,7 +148,10 @@ PlayerSettings:
   tvOSBundleVersion: 1.0
   bundleVersion: 0.0.1
   preloadedAssets:
-  - {fileID: 11400000, guid: 64e9d498d13854d4584691c4d19b0d42, type: 2}
+  - {fileID: 11400000, guid: 9e944051271074c9b82cf02234063050, type: 2}
+  - {fileID: 11400000, guid: 33491290b38a6094fbf61d3c24a308a5, type: 2}
+  - {fileID: 5269706996647393442, guid: e3aee76b9372917449aef639e2f74814, type: 2}
+  - {fileID: 3233996788981779080, guid: 87b413c5a910b15498a98200731b1754, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -546,9 +549,6 @@ PlayerSettings:
       m_Kind: 1
       m_SubKind: 
   m_BuildTargetBatching:
-  - m_BuildTarget: Standalone
-    m_StaticBatching: 1
-    m_DynamicBatching: 0
   - m_BuildTarget: Android
     m_StaticBatching: 1
     m_DynamicBatching: 0
@@ -861,7 +861,7 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
+    Android: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS;APP_UI_EDITOR_ONLY
     Standalone: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
     Windows Store Apps: USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
   additionalCompilerArguments: {}
