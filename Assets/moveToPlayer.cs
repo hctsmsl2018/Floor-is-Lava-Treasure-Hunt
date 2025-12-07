@@ -8,13 +8,9 @@ public class EnemyMoveToCameraRig : MonoBehaviour
 {
     public Transform cameraRigTarget; // Assign the CenterEyeAnchor from the XR Rig here
 
-    private NavMeshAgent navMeshAgent;
-
     void Start()
     {
-        cameraRigTarget = GameObject.Find("[BuildingBlock] Camera Rig").transform.Find("TrackingSpace").Find("CenterEyeAnchor");
-        // Get the NavMeshAgent component
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        return;
     }
 
     void Update()
@@ -25,6 +21,10 @@ public class EnemyMoveToCameraRig : MonoBehaviour
             return;
         }
 
-        navMeshAgent.SetDestination(cameraRigTarget.position - (cameraRigTarget.position - transform.position).normalized * 3);
+        Vector3 cameraPosition = cameraRigTarget.position;
+        Vector3 enemyPosition = transform.position;
+        Vector3 destination = new Vector3(cameraPosition.x, enemyPosition.y, cameraPosition.z);
+        
+        transform.position = Vector3.MoveTowards(enemyPosition, destination, 0.1f * Time.deltaTime);
     }
 }

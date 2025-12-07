@@ -34,7 +34,7 @@ public class EnemySpawner : MonoBehaviour
             int randomColumn = Random.Range(0, gridGenerator.columns);
 
             GameObject tile = gridGenerator.grid[randomRow, randomColumn];
-
+            Debug.Log(tile.GetComponent<Renderer>().material);
             if (tile != null)
             {
                 Vector3 spawnPosition = tile.transform.position + new Vector3(0, 0.3f, 0); // Adjust Y position to place enemy above the tile
