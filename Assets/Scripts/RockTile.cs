@@ -113,8 +113,17 @@ public class RockTile : MonoBehaviour
         }
     }
 
+    public GameObject particleEffectPrefab;
+
     public void Collapse()
     {
+        // specific particle effect
+        if (particleEffectPrefab != null)
+        {
+            GameObject p = Instantiate(particleEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(p, 2f); // Cleanup particle after 2 seconds
+        }
+
         // Force transition to lava immediately
         currentState = CrackState.VergeOfCrumbling; // Set to last state before lava
         ConvertToLava();

@@ -806,6 +806,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6ab08ff98476fa14aa038142fe3c3eb8, type: 2}
     - target: {fileID: 7673549856046577812, guid: d6878e1999eb4b44a9f5a263af86c185,
         type: 3}
+      propertyPath: fireParticlePrefab
+      value: 
+      objectReference: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5,
+        type: 3}
+    - target: {fileID: 7673549856046577812, guid: d6878e1999eb4b44a9f5a263af86c185,
+        type: 3}
       propertyPath: rockMaterial_Cracked
       value: 
       objectReference: {fileID: 2100000, guid: 4971c76fb9245714e87da64b4a450352, type: 2}

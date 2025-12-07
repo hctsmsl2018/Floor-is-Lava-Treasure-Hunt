@@ -15,6 +15,8 @@ public class GridGenerator : MonoBehaviour
     public Material rockMaterial_VergeOfCrumbling; // Material for rock tiles on verge of crumbling
     public Material backgroundMaterial; // Material for background
 
+    public GameObject fireParticlePrefab; // Assign in Inspector
+
     private GameObject[,] grid; // Store references to grid tiles
     public System.Collections.Generic.List<RockTile> allTiles = new System.Collections.Generic.List<RockTile>();
     private Material[] rockMaterials; // Array to store rock materials by state
@@ -60,6 +62,7 @@ public class GridGenerator : MonoBehaviour
                 // Always create a rock tile initially
                 RockTile rockTile = square.AddComponent<RockTile>();
                 rockTile.SetInitialState(0); // Always start uncracked
+                rockTile.particleEffectPrefab = fireParticlePrefab; // Pass the particle reference
                 
                 Renderer squareRenderer = square.GetComponent<Renderer>();
                 if (squareRenderer != null)
