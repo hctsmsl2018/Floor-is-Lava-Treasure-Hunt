@@ -1,0 +1,167 @@
+// 12/6/2025 AI-Tag
+// This was created with the help of Assistant, a Unity Artificial Intelligence product.
+
+using UnityEngine;
+
+public class RockTile : MonoBehaviour
+{
+    public enum CrackState
+    {
+        Uncracked = 0,
+        Cracked = 1,
+        VergeOfCrumbling = 2
+    }
+
+    [Header("Rock State")]
+    public CrackState currentState = CrackState.Uncracked;
+
+    [Header("Flicker Settings")]
+    public float[] baseFlickerSpeeds = { 0.5f, 1.5f, 3.5f }; // Speed for each crack state
+    public float minBrightness = 1.0f;
+    public float maxBrightness = 1.5f;
+
+    [Header("Damage Settings")]
+    public float damagePerSecond = 0.25f; // Takes 4 seconds to break each state
+    
+    private Material rockMaterial;
+    private Renderer tileRenderer;
+    private float damageAccumulated = 0f;
+    private bool playerStandingOn = false;
+    private float flickerOffset;
+    private Color originalColor;
+
+    void Start()
+    {
+        tileRenderer = GetComponent<Renderer>();
+        if (tileRenderer != null)
+        {
+            rockMaterial = tileRenderer.material; // Create unique instance
+            if (rockMaterial.HasProperty("_BaseColor"))
+            {
+                originalColor = rockMaterial.GetColor("_BaseColor");
+            }
+        }
+
+        flickerOffset = Random.Range(0f, 100f); // Random start offset for variation
+        UpdateMaterialForState();
+    }
+
+    public void SetInitialState(int state)
+    {
+        currentState = (CrackState)Mathf.Clamp(state, 0, 2);
+        if (rockMaterial != null)
+        {
+            UpdateMaterialForState();
+        }
+    }
+
+    void Update()
+    {
+        if (playerStandingOn)
+        {
+            // Apply flicker effect based on current crack state
+            float currentFlickerSpeed = baseFlickerSpeeds[(int)currentState];
+            float brightness = Mathf.Lerp(minBrightness, maxBrightness,
+                (Mathf.Sin(Time.time * currentFlickerSpeed + flickerOffset) + 1f) / 2f);
+
+            if (rockMaterial != null && rockMaterial.HasProperty("_BaseColor"))
+            {
+                rockMaterial.SetColor("_BaseColor", originalColor * brightness);
+            }
+
+            // Accumulate damage
+            damageAccumulated += damagePerSecond * Time.deltaTime;
+
+            // Check if ready to break to next state
+            if (damageAccumulated >= 1f)
+            {
+                BreakToNextState();
+                damageAccumulated = 0f;
+            }
+        }
+        else
+        {
+            // Reset brightness when not standing on tile
+            if (rockMaterial != null && rockMaterial.HasProperty("_BaseColor"))
+            {
+                rockMaterial.SetColor("_BaseColor", originalColor);
+            }
+        }
+    }
+
+    void BreakToNextState()
+    {
+        if (currentState < CrackState.VergeOfCrumbling)
+        {
+            currentState++;
+            UpdateMaterialForState();
+            
+            // Find GridGenerator to get the appropriate material
+            GridGenerator gridGen = FindObjectOfType<GridGenerator>();
+            if (gridGen != null && rockMaterial != null)
+            {
+                // Clean up old material
+                Destroy(rockMaterial);
+                
+                // Get new material for the updated state
+                Material newMaterial = gridGen.GetRockMaterialForState((int)currentState);
+                tileRenderer.material = newMaterial;
+                rockMaterial = tileRenderer.material;
+                
+                if (rockMaterial.HasProperty("_BaseColor"))
+                {
+                    originalColor = rockMaterial.GetColor("_BaseColor");
+                }
+            }
+        }
+        else
+        {
+            // Tile has completely crumbled - convert to lava
+            ConvertToLava();
+        }
+    }
+
+    void UpdateMaterialForState()
+    {
+        // This will be called when materials are assigned from GridGenerator
+        // The GridGenerator will handle setting the appropriate material for each state
+    }
+
+    void ConvertToLava()
+    {
+        // Remove RockTile component
+        Destroy(this);
+
+        // Add LavaTile component
+        gameObject.AddComponent<LavaTile>();
+
+        // GridGenerator will need to update the material reference
+        // We'll notify through the tag system
+        gameObject.tag = "ConvertedLava";
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerStandingOn = true;
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerStandingOn = false;
+        }
+    }
+
+    void OnDestroy()
+    {
+        // Clean up material instance
+        if (rockMaterial != null)
+        {
+            Destroy(rockMaterial);
+        }
+    }
+}
