@@ -69,10 +69,17 @@ public class GridGenerator : MonoBehaviour
             }
         }
 
-        // Create black background
+        // Create lava plane underneath
+        GameObject lavaPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        lavaPlane.transform.localScale = new Vector3(columns * squareSize / 10, 1, rows * squareSize / 10);
+        lavaPlane.transform.position = new Vector3(0, -0.02f, 0); // Slightly below the grid tiles
+        lavaPlane.GetComponent<Renderer>().material = lavaMaterial;
+        lavaPlane.name = "LavaPlane";
+
+        // Create black background (now even lower, just in case)
         GameObject background = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        background.transform.localScale = new Vector3(columns * squareSize / 10, 1, rows * squareSize / 10);
-        background.transform.position = new Vector3(0, -0.01f, 0); // Slightly below the grid
+        background.transform.localScale = new Vector3(columns * squareSize / 5, 1, rows * squareSize / 5); // Make it larger to cover edge cases
+        background.transform.position = new Vector3(0, -0.1f, 0); 
         background.GetComponent<Renderer>().material = backgroundMaterial;
         background.name = "Background";
     }

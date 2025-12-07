@@ -113,6 +113,15 @@ public class RockTile : MonoBehaviour
                     originalColor = rockMaterial.GetColor("_BaseColor");
                 }
             }
+
+            // If we just entered VergeOfCrumbling, hide the mesh to expose lava plane
+            if (currentState == CrackState.VergeOfCrumbling)
+            {
+                if (tileRenderer != null)
+                {
+                    tileRenderer.enabled = false;
+                }
+            }
         }
         else
         {
@@ -123,10 +132,14 @@ public class RockTile : MonoBehaviour
 
     void UpdateMaterialForState()
     {
-        // This will be called when materials are assigned from GridGenerator
-        // The GridGenerator will handle setting the appropriate material for each state
+        // Initial setup check
+        if (currentState == CrackState.VergeOfCrumbling && tileRenderer != null)
+        {
+            tileRenderer.enabled = false;
+        }
     }
 
+    // Modify the ConvertToLava method
     void ConvertToLava()
     {
         // Remove RockTile component
@@ -135,8 +148,14 @@ public class RockTile : MonoBehaviour
         // Add LavaTile component
         gameObject.AddComponent<LavaTile>();
 
-        // GridGenerator will need to update the material reference
-        // We'll notify through the tag system
+        // Ensure mesh renderer is disabled (should already be done if it was crumbling)
+        MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+        if (meshRenderer != null)
+        {
+            meshRenderer.enabled = false;
+        }
+
+        // Notify GridGenerator to update the material reference
         gameObject.tag = "ConvertedLava";
     }
 

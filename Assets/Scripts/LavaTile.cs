@@ -23,6 +23,7 @@ public class LavaTile : MonoBehaviour
         if (renderer != null)
         {
             lavaMaterial = renderer.material; // Creates a unique instance
+            renderer.enabled = false; // Hide the tile to expose the lava plane below
         }
 
         originalScale = transform.localScale;
