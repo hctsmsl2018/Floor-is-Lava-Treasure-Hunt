@@ -1,6 +1,7 @@
 // 12/6/2025 AI-Tag
 // This was created with the help of Assistant, a Unity Artificial Intelligence product.
 
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -27,17 +28,25 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemies()
     {
+        List<GameObject> lavaTiles = new List<GameObject>();
+
+        foreach (var tile in gridGenerator.grid)
+        {
+            if (tile.GetComponent<Renderer>().material.name.Contains("Lava"))
+            {
+                lavaTiles.Add(tile);
+            }
+        }
+
         for (int i = 0; i < numberOfEnemies; i++)
         {
             // Select a random position on the grid
-            int randomRow = Random.Range(0, gridGenerator.rows);
-            int randomColumn = Random.Range(0, gridGenerator.columns);
+            int randomRow = Random.Range(0, lavaTiles.Count);
+            GameObject tile = lavaTiles[randomRow];
 
-            GameObject tile = gridGenerator.grid[randomRow, randomColumn];
-            Debug.Log(tile.GetComponent<Renderer>().material);
             if (tile != null)
             {
-                Vector3 spawnPosition = tile.transform.position + new Vector3(0, 0.3f, 0); // Adjust Y position to place enemy above the tile
+                Vector3 spawnPosition = tile.transform.position + new Vector3(0, -0.1f, 0); // Adjust Y position to place enemy above the tile
                 Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
             }
         }
